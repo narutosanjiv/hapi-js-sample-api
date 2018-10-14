@@ -2,15 +2,6 @@
 # yarn lockfile v1
 
 
-"@now-ims/hapi-now-auth@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@now-ims/hapi-now-auth/-/hapi-now-auth-1.1.2.tgz#09e1a23ae02abae2fa0264f419ee9159b64c031d"
-  integrity sha512-Ff91dj6xPC3O1CZM89Bvk/omkxgTSFhXNl1F6swdH76YpwQrio1d+Vuqf5UTwxUcu2uRUtUr/JTPn1WLd4II0w==
-  dependencies:
-    boom "^7.2.0"
-    hoek "^5.0.3"
-    jsonwebtoken "^8.2.1"
-
 accept@3.x.x:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/accept/-/accept-3.0.2.tgz#83e41cec7e1149f3fd474880423873db6c6cc9ac"
@@ -48,7 +39,7 @@ bluebird@3.5.1:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
   integrity sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==
 
-boom@7.x.x, boom@^7.2.0:
+boom@7.x.x, boom@^7.1.1:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/boom/-/boom-7.2.0.tgz#2bff24a55565767fde869ec808317eb10c48e966"
   integrity sha1-K/8kpVVldn/ehp7ICDF+sQxI6WY=
@@ -111,6 +102,11 @@ content@4.x.x:
   dependencies:
     boom "7.x.x"
 
+cookie@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
+  integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
+
 cryptiles@4.x.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-4.1.2.tgz#363c9ab5c859da9d2d6fb901b64d980966181184"
@@ -131,6 +127,15 @@ ecdsa-sig-formatter@1.0.10:
   integrity sha1-HFlQAPBKiJffuFAAiSoPTDOvhsM=
   dependencies:
     safe-buffer "^5.0.1"
+
+hapi-auth-jwt2@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/hapi-auth-jwt2/-/hapi-auth-jwt2-8.1.0.tgz#4e3497cdb3925a315861f60f4057ddd11466e68c"
+  integrity sha512-Xebbslw5jAPnw+KbxhsuFXV38SxPqtvTYwrSemXZicbRKvIn8p0Ut0MSNmzG6nxpB5Nd4aA0b8U6MCDFd2ElYw==
+  dependencies:
+    boom "^7.1.1"
+    cookie "^0.3.1"
+    jsonwebtoken "^8.1.0"
 
 hapi@^17.6.0:
   version "17.6.0"
@@ -164,7 +169,7 @@ heavy@6.x.x:
     hoek "5.x.x"
     joi "13.x.x"
 
-hoek@5.x.x, hoek@^5.0.3:
+hoek@5.x.x:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-5.0.4.tgz#0f7fa270a1cafeb364a4b2ddfaa33f864e4157da"
   integrity sha512-Alr4ZQgoMlnere5FZJsIyfIjORBqZll5POhDsF4q64dPuJR6rNxXdDxtHSQq8OXRurhmx+PWYEE8bXRROY8h0w==
@@ -194,7 +199,7 @@ joi@13.x.x:
     isemail "3.x.x"
     topo "3.x.x"
 
-jsonwebtoken@^8.2.1:
+jsonwebtoken@^8.1.0, jsonwebtoken@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#056c90eee9a65ed6e6c72ddb0a1d325109aaf643"
   integrity sha512-oge/hvlmeJCH+iIz1DwcO7vKPkNGJHhgkspk8OH3VKlw+mbi42WtD4ig1+VXRln765vxptAv+xT26Fd3cteqag==
