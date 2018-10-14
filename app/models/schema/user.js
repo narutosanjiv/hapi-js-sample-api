@@ -1,15 +1,21 @@
-let jwt = require('jsonwebtoken')
 
-let mongoose = require('mongoose');
+const crypto = require('crypto')
+const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator')
 
-let Schema = mongoose.Schema;
-let UserSchema = new Schema({
-    firstname:  String,
+const Schema = mongoose.Schema;
+const UserSchema = new Schema({
+    email: {type: String, index: true, unique: true, required: true, uniqueCaseInsensitive: true},
+    firstname:  {type: String, required: true},
     lastname: String,
-    gender:   String,
-    encrypted_password: String,
-    salt: String
-},{timestamps: true});
+    gender:   {type: String, required: true},
+    encrypted_password: {type: String, required: true},
+    salt: {type: String, required: true}
+}, {timestamps: true});
+
+// Apply the uniqueValidator plugin to userSchema.
+UserSchema.plugin(uniqueValidator);
 
 UserSchema.methods.validPassword = function (password) {
     var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
