@@ -10,6 +10,12 @@ exports.register = async (req, h) => {
 
     const user = new User(userParams)
     user.setPassword(userParams.password)
-    const res =  await user.save()
-    return {success: true, statusCode: 201}
+    let response_data
+    try{
+        const res =  await user.save()
+        response_data = {success: true, statusCode: 201}
+    } catch(err){
+        response_data = {success: false, statusCode: 422, message: err.message}
+    }
+    return response_data
 }

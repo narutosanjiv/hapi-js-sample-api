@@ -8,6 +8,9 @@ exports.routes =[
         options: { 
             auth: false,
             validate: {
+                options: {
+                    abortEarly: false
+                },
                 payload: {
                     user:{
                         email: Joi.string().email().required(),
@@ -15,6 +18,10 @@ exports.routes =[
                         firstname: Joi.string().min(2).max(200).required(),
                         gender: Joi.string().valid(['M', 'F', 'MALE', 'FEMALE']).uppercase().required(),
                     }
+                },
+                failAction: (request, h, err) => {
+                    throw err;
+                    return;
                 }
             }
         }, 

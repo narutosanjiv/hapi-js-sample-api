@@ -6,6 +6,31 @@ const Route = require('./routes')
 const validate = (req, h) =>{
     return true
 }
+const server_opts = {
+    ops: {
+        interval: 1000
+    },
+    reporters: {
+        myConsoleReporter: [{
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{ log: '*', response: '*' }]
+        }, {
+            module: 'good-console'
+        }, 'stdout'],
+        myFileReporter: [{
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{ ops: '*' }]
+        }, {
+            module: 'good-squeeze',
+            name: 'SafeJson'
+        }, {
+            module: 'good-file',
+            args: ['./test/fixtures/awesome_log']
+        }]
+    }
+}
 const init = async() =>{
     const server = Hapi.server({
         port: 3000,
@@ -13,7 +38,7 @@ const init = async() =>{
         routes: {cors: {origin: ['*']} }
     });
 
-    await server.register(require('hapi-auth-jwt2'));
+    await server.register([{plugin: require('good')}, {plugin: require('hapi-auth-jwt2'), options: server_opts}]);
     server.auth.strategy('jwt', 'jwt',
     { 
         key: 'NeverShareYourSecret',          // Never Share your secret key
