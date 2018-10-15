@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@types/mongoose-unique-validator": "^1.0.1",
+    "dotenv": "^6.1.0",
     "good": "^8.1.1",
     "hapi": "^17.6.0",
     "hapi-auth-jwt2": "^8.1.0",

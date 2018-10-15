@@ -1,6 +1,8 @@
 const Joi = require('joi');
 const userCreate = require('../app/controllers/users')
 const loginHandler = require('../app/controllers/login')
+const createEmployee = require('../app/controllers/employee').create
+const listEmployees = require('../app/controllers/employee').list
 
 exports.routes =[
     { 
@@ -32,6 +34,22 @@ exports.routes =[
         path: '/login', 
         options: { auth: false }, 
         handler: loginHandler.login
+    },
+    {
+        method: 'GET',
+        path: '/v1/employees',
+        handler: listEmployees,
+        options: { 
+            auth: 'jwt'
+        }
+    },
+    {
+        method: 'POST',
+        path: '/v1/employees',
+        handler: createEmployee,
+        options: { 
+            auth: 'jwt'
+        }
     }
 ]
 

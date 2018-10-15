@@ -1,10 +1,12 @@
 'use strict';
+require('dotenv').config()
 
 const Hapi = require('hapi');
 const mongooseDB = require('./config/database.js').connection;
 const Route = require('./routes') 
-const validate = (req, h) =>{
-    return true
+const validate = async (decoded, request) =>{
+    console.log(decoded)
+    return { isValid: true }
 }
 const server_opts = {
     ops: {
