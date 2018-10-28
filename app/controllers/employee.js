@@ -32,7 +32,12 @@ exports.show = async(req, h) => {
 exports.update = async(req, h) => {
     const employeeParams = req.payload.employee;
     let query = { emp_uniq_id: req.params.emp_uniq_id };
-    const employee  = await Employee.findOneAndUpdate(query, employeeParams, {new: true})
-    return employee
+    try{
+        const employee  = await Employee.findOneAndUpdate(query, employeeParams, {new: true})
+        return employee
+    }
+    catch(err){
+        return({success: false, statusCode: 422, message: err.message})
+    }
 }
 

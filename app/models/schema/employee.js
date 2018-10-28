@@ -11,5 +11,5 @@ const employeeSchema = new Schema({
     dob: String,
     doj: String
 }, {timestamps: true});
-employeeSchema.plugin(uniqueValidator);
+employeeSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
 module.exports = employeeSchema;
