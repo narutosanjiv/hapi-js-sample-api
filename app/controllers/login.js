@@ -10,17 +10,17 @@ exports.login = async(req, h) => {
     const promise = new Promise((resolve, reject) => {
         query.exec(function(err, docs){
             if(err){
-                reject(Boom.unauthorized('invalid login email/password'));
+                return resolve(reject(Boom.unauthorized('invalid login email/password')));
             } 
             doc = docs[0]
             if(!doc){
-                reject(Boom.notFound('Email is not registered'))
+                return resolve(reject(Boom.notFound('Email is not registered')))
             }  
             if(!doc.validPassword(password)){
-                reject(Boom.unauthorized('invalid login email/password'));
+                return resolve(reject(Boom.unauthorized('invalid login email/password')));
             }
             const token = doc.generateJWT();
-            const response = h.response('success');
+            const response = h.response({success: true});
             response.header('X-Auth-Token', token);
             resolve(response)
         })

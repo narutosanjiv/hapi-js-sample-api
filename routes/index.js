@@ -3,6 +3,7 @@ const userCreate = require('../app/controllers/users')
 const loginHandler = require('../app/controllers/login')
 const createEmployee = require('../app/controllers/employee').create
 const listEmployees = require('../app/controllers/employee').list
+const { show, deleteRecord, update } = require('../app/controllers/employee')
 
 exports.routes =[
     { 
@@ -48,6 +49,30 @@ exports.routes =[
         path: '/v1/employees',
         handler: createEmployee,
         options: { 
+            auth: 'jwt'
+        }
+    },
+    {
+        method: 'GET',
+        path: '/v1/employees/{emp_uniq_id}',
+        handler: show,
+        options: {
+            auth: 'jwt'
+        }
+    },
+    {
+        method: 'DELETE',
+        path: '/v1/employees/{emp_uniq_id}',
+        handler: deleteRecord,
+        options: {
+            auth: 'jwt'
+        }
+    },
+    {
+        method: 'PATCH',
+        path: '/v1/employees/{emp_uniq_id}',
+        handler: update,
+        options: {
             auth: 'jwt'
         }
     }
