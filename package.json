@@ -10,7 +10,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@types/mongoose-unique-validator": "^1.0.1",
+    "@types/mongoose-unique-validator": "^1.0.9",
     "dotenv": "^6.1.0",
     "good": "^8.1.1",
     "hapi": "^17.6.0",
